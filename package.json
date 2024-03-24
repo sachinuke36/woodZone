@@ -1,7 +1,7 @@
 {
   "homepage": "https://sachinuke36.github.io/woodZone/",
   "name": "woodzone",
-  "private": true,
+  "private":true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
