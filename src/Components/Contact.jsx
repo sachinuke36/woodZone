@@ -6,11 +6,11 @@ import { useToast } from '@chakra-ui/react';
 import * as Yup from "yup";
 
 const contactSchemaValidation = Yup.object().shape({
-    name: Yup.string().required("Naam to bata de yrr"),
-    email: Yup.string().email("Invalid Email").required("Email bhi dal de"),
+    name: Yup.string().required("Name is required"),
+    email: Yup.string().email("Invalid Email").required("Email ID is required"),
     contact: Yup.string()
         .matches(/^[0-9]{10}$/, "Invalid Phone Number")
-        .required("Phone number nahi doge to call kaise karunga"),
+        .required("Phone number is required"),
 });
 
 
