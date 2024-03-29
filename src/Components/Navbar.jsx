@@ -8,7 +8,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar = () => {
   return (
-    <Flex boxShadow={'xl'} minW={{md:780, base:200, lg: 1000, xl:1280, "2xl":1400}}  h='90px' mx={'auto'} gap={{md:2, base:1}} alignItems={'center'} justifyContent={'space-around'}  >
+    <Flex boxShadow={'xl'} minW={{md:780, base:205, lg: 1000, xl:1280, "2xl":1400}} px={2}  h='90px' mx={'auto'} gap={{md:2, base:1}} alignItems={'center'} justifyContent={'space-around'}  >
       <Box className='logo'>
         <RouterLink to='/' style={{ textDecoration: 'none' }}>
           <Text as='h2' fontWeight={800} fontSize={{md:30, base:17}}>Wood<span style={{color:"red", fontWeight:800}}>Zone</span></Text>
