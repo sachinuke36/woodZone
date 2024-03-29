@@ -10,7 +10,9 @@ export const Data =()=>{
 const [{cart}, dispatch] = useStateValue();
 const toast = useToast();
 
-    const API_URL = "http://localhost:3000/items";
+    // const API_URL = "http://localhost:3000/items";
+    const API_URL = `http://localhost:${process.env.API_PORT}/items`;
+
     const [data, setData] = useState([]);
     const [FilteredData, setFilteredData] = useState([]);
     const [cat, setCat] = useState('ALL');
