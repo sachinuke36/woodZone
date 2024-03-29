@@ -11,7 +11,8 @@ const [{cart}, dispatch] = useStateValue();
 const toast = useToast();
 
     // const API_URL = "http://localhost:3000/items";
-    const API_URL = `http://localhost:${process.env.API_PORT}/items`;
+    const API_URL = `/data/db.json`;
+    
 
     const [data, setData] = useState([]);
     const [FilteredData, setFilteredData] = useState([]);
