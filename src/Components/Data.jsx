@@ -43,8 +43,8 @@ const toast = useToast();
                 const response = await fetch(API_URL);
                 if (!response.ok) throw new Error("Did not receive the data");
                 const json = await response.json();
-                setData(json);
-                setFilteredData(json);
+                setData(json.items);
+                setFilteredData(json.items);
             } catch (error) {
                 console.error(error);
             }
