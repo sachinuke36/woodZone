@@ -112,7 +112,7 @@ const toast = useToast();
                     objectFit='cover'
                     mx="auto"
                     mixBlendMode={"multiply"}
-                    maxH="250px"
+                    maxH={{md:250, base:100}}
                     w="100%"
                 /> </Box>
                 <Box><Text w="100px" fontWeight={'800'} mx="auto" color={'red'}>Rs.{item.price}</Text>
