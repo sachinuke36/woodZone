@@ -64,7 +64,7 @@ const Contact = () => {
                             message: ''
                         }}
                         onSubmit={(values, { resetForm }) => {
-                            console.log(values);
+                            // console.log(values);
                             toast({
                                 title: 'Successfully submitted.',
                                 description: "We will reach out to you soon",
@@ -87,7 +87,7 @@ const Contact = () => {
                                                     type={item.type}
                                                     name={item.htmlFor}
                                                     component="input"
-                                                    style={ {padding: '7px', minWidth: '370px'} }
+                                                    style={ {padding: '7px', minWidth: '350px'} }
                                                 /> </Box><ErrorMessage name={item.htmlFor} style={{color:'red'}} component="div" />
                                                 </Box>
                                                 
@@ -96,7 +96,7 @@ const Contact = () => {
                                                     name={item.htmlFor}
                                                     pattern="[0-9]{10}"
                                                     component="input"
-                                                    style={{ padding: '7px', minWidth: '370px'}} // Add padding here
+                                                    style={{ padding: '7px', minWidth: '350px'}} // Add padding here
                                                 /></Box> <ErrorMessage name={item.htmlFor} style={{color:'red'}} component="div" />
                                                 </Box>
                                             }

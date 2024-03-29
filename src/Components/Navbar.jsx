@@ -11,7 +11,7 @@ const Navbar = () => {
     <Flex boxShadow={'xl'} minW={{md:780, base:200, lg: 1000, xl:1280, "2xl":1400}}  h='90px' mx={'auto'} gap={{md:2, base:1}} alignItems={'center'} justifyContent={'space-around'}  >
       <Box className='logo'>
         <RouterLink to='/' style={{ textDecoration: 'none' }}>
-          <Text as='h2' fontWeight={800} fontSize={{md:30, base:20}}>Wood<span style={{color:"red", fontWeight:800}}>Zone</span></Text>
+          <Text as='h2' fontWeight={800} fontSize={{md:30, base:17}}>Wood<span style={{color:"red", fontWeight:800}}>Zone</span></Text>
         </RouterLink>
       </Box>
       <Box borderRadius={10}>
