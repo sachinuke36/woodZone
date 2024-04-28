@@ -6,12 +6,12 @@ import {Img, Box, VStack, HStack, Flex, Button, Text, Container} from '@chakra-u
 
 const MyOrders = () => {
     const [{cart}, dispatch] = useStateValue();
-    console.log(cart);
+    // console.log(cart);
 
     const removeItem = (item) =>{
             dispatch({
                 type:"DELETE",
-                item:item
+                item:item,
             })
     }
 
@@ -27,9 +27,9 @@ const MyOrders = () => {
     
       {cart.length === 0 ? <Text as='h1' fontSize={'50px'} fontWeight={600}>Cart is empty.......</Text> :
       
-        cart.map((item)=>(
+        cart.map((item,i)=>(
             
-           <HStack overflow={'hidden'} borderRadius={'10px'} border='1px solid gray' h={['125px','150px','150px']} justifyContent={'space-between'}> 
+           <HStack key={i} overflow={'hidden'} borderRadius={'10px'} border='1px solid gray' h={['125px','150px','150px']} justifyContent={'space-between'}> 
            <Box bg={'#d6cbcb'} >
                 <Img  mixBlendMode={"multiply"} src={item.image} objectFit={'contain'}  h={['140px', '170px', '170px']}  w={['140px', '170px', '170px']} ></Img>
            </Box>
