@@ -38,13 +38,14 @@ const MyOrders = () => {
       
         cart.map((item,i)=>(
             
-           <HStack key={i} overflow={'hidden'} borderRadius={'10px'} border='1px solid gray' h={['125px','150px','150px']} justifyContent={'space-between'}> 
+           <HStack key={i} overflow={'hidden'} borderRadius={'10px'} border='1px solid gray' h={['142px','160px','160px']} justifyContent={'space-between'}> 
            <Box bg={'#d6cbcb'} >
                 <Img  mixBlendMode={"multiply"} src={item.image} objectFit={'contain'}  h={['140px', '170px', '170px']}  w={['140px', '170px', '170px']} ></Img>
            </Box>
 
            <VStack >
            <Box w={['200px', '300px', '500px']}>
+           <Flex fontSize={20} justifyContent={'center'}> <Text fontWeight={'800'} color={'black'}>{item.name}</Text></Flex> 
            <Text noOfLines={{md:2, base:2}}> {item.description} </Text>
            <Box alignItems={'center'} justifyContent={'center'} color={'black'} fontWeight={800}>
             {`Rs.${item.price}`}

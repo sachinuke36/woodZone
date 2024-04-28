@@ -136,7 +136,8 @@ const toast = useToast();
                     w="100%"
                 /> </Box>
                 <Box><Text w="100px" fontWeight={'800'} mx="auto" color={'red'}>Rs.{item.price}</Text>
-                    <Text px="7px" fontWeight="600"
+                 <Flex fontSize={20} justifyContent={'center'}> <Text fontWeight={'800'} color={'black'}>{item.name}</Text></Flex> 
+                    <Text px="7px" fontWeight="400"
                         noOfLines={2}
                     >{item.description}</Text></Box>
                     <Box>{
