@@ -38,7 +38,7 @@ const MyOrders = () => {
       
         cart.map((item,i)=>(
             
-           <HStack key={i} overflow={'hidden'} borderRadius={'10px'} border='1px solid gray' h={['142px','160px','160px']} justifyContent={'space-between'}> 
+           <HStack key={i} overflow={'hidden'} borderRadius={'10px'} border='1px solid gray' h={['144px','160px','160px']} justifyContent={'space-between'}> 
            <Box bg={'#d6cbcb'} >
                 <Img  mixBlendMode={"multiply"} src={item.image} objectFit={'contain'}  h={['140px', '170px', '170px']}  w={['140px', '170px', '170px']} ></Img>
            </Box>
