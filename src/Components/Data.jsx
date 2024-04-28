@@ -4,6 +4,9 @@ import { defineStyle, defineStyleConfig } from '@chakra-ui/react'
 import { extendTheme } from '@chakra-ui/react';
 import { useStateValue } from '../StateProvider/StateProvider';
 import { useToast } from '@chakra-ui/react'
+import db from '../../data/firebase';
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+
 
 
 export const Data =()=>{
@@ -33,26 +36,43 @@ const toast = useToast();
           item : item 
       });
   };
+
+
   
 
 
 
     useEffect(() => {
         const fetchItems = async () => {
-            try {
-                const response = await fetch(API_URL);
-                if (!response.ok) throw new Error("Did not receive the data");
-                const json = await response.json();
-                setData(json.items);
-                setFilteredData(json.items);
-            } catch (error) {
+          try {
+            // console.log(db);
+            const Items = collection(db, 'Items');
+            const ItemsSnapshot = await getDocs(Items);
+            const itemsData = ItemsSnapshot.docs.map(doc  =>( {id: doc.id, ...doc.data()}));
+            setData(itemsData);
+            setFilteredData(itemsData);
+        } catch (error) {
                 console.error(error);
             }
         }
+
+      //   const fetchItems = () => {
+      //     db.collection("data").get().then((querySnapshot) => {
+   
+      //         // Loop through the data and store
+      //         // it in array to display
+      //         querySnapshot.forEach(element => {
+      //             var data = element.data();
+      //             setInfo(arr => [...arr, data]);
+   
+      //         });
+      //     })
+      // }
+
         fetchItems();   
     },[]);
-    console.log(cart);
-
+    // console.log(cart);
+    
 
   const buttons =[{
     title:"All", variant:cat,
@@ -105,9 +125,9 @@ const toast = useToast();
 {
     FilteredData.map((item, i) => (
        
-        <WrapItem  key={item.id} boxShadow={'xl'} mx="auto" bgColor={"white"} mt="20px" borderRadius={"0 0 10px 10px"} >
+        <WrapItem  key={i} boxShadow={'xl'} mx="auto" bgColor={"white"} mt="20px" borderRadius={"0 0 10px 10px"} >
              <Flex mx="5px" my="5px">
-            <VStack w={{md:"250px",base:'150px'}}  h='auto' pb={{base:"3px"}} key={i} overflow={"hidden"}  >
+            <VStack w={{md:"250px",base:'150px'}}  h='auto' pb={{base:"3px"}}  overflow={"hidden"}  >
                 <Box w="100%"   bgColor='#d6cbcb'><Img src={item.image}
                     objectFit='cover'
                     mx="auto"

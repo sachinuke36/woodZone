@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom'
 import PageLayout from '../Layouts/pagelayout/PageLayout'
 import Contact from './Components/Contact'
 import MyOrders from './Components/MyOrders'
+import Login from './Components/Login'
 
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
     <PageLayout>
     <Routes>
       {/* <Route path='/' element={<Navbar/>}/> */}
+      <Route path='/login' element={<Login/>}/> 
       <Route path='/' element={<Data/>}/> 
       <Route path='/contact' element={<Contact/>}/> 
       <Route path='/my-orders' element={<MyOrders/>}/> 
