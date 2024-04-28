@@ -1,14 +1,23 @@
 import React from 'react';
 import { useStateValue } from '../StateProvider/StateProvider';
 import {Img, Box, VStack, HStack, Flex, Button, Text, Container} from '@chakra-ui/react'
+import { useToast } from '@chakra-ui/react'
 
 
 
 const MyOrders = () => {
     const [{cart}, dispatch] = useStateValue();
+    const toast = useToast();
+
     // console.log(cart);
 
     const removeItem = (item) =>{
+      toast({
+        title: 'Item Removed from the cart',
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+      })
             dispatch({
                 type:"DELETE",
                 item:item,
