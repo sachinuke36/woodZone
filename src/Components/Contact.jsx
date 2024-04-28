@@ -4,6 +4,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import { useToast } from '@chakra-ui/react';
 import * as Yup from "yup";
+import db from '../../data/firebase';
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import { addDoc, updateDoc, doc } from 'firebase/firestore/lite';
+
 
 const contactSchemaValidation = Yup.object().shape({
     name: Yup.string().required("Name is required"),
@@ -63,19 +67,39 @@ const Contact = () => {
                             contact: '',
                             message: ''
                         }}
-                        onSubmit={(values, { resetForm }) => {
-                            // console.log(values);
-                            toast({
-                                title: 'Successfully submitted.',
-                                description: "We will reach out to you soon",
-                                status: 'success',
-                                duration: 3000,
-                                isClosable: true,
-                                position:'bottom'
-                              })
-                            resetForm();
-                            setIsSubmitted(true);
-                        }}>
+                        onSubmit={async (values, { resetForm }) => {
+                            try {
+                                const formData = collection(db, 'contact-form');
+                                await addDoc(formData, {
+                                    name: values.name,
+                                    email: values.email,
+                                    contact: values.contact,
+                                    message: values.message
+                                });
+                        
+                                toast({
+                                    title: 'Successfully submitted.',
+                                    description: "We will reach out to you soon",
+                                    status: 'success',
+                                    duration: 3000,
+                                    isClosable: true,
+                                    position: 'bottom'
+                                });
+                                resetForm();
+                                setIsSubmitted(true);
+                            } catch (error) {
+                                console.error("Error submitting form:", error);
+                                toast({
+                                    title: 'Submission failed.',
+                                    description: "Please try again later.",
+                                    status: 'error',
+                                    duration: 3000,
+                                    isClosable: true,
+                                    position: 'bottom'
+                                });
+                            }
+                        }}
+                        >
                         <Form>
                             <VStack spacing={3}>
                                 {formProps.map((item, i) => (
