@@ -29,13 +29,13 @@ const MyOrders = () => {
      const  totalPrice = cart.reduce((total,item)=> total + item.price,0);
 
   return (
-   <Box display={['block','inline-block','flex']} justifyContent={['center','center','space-between']} mt='40px' minW={{md:780, base:205, lg: 1000, xl:1280, "2xl":1400}} >
+   <Box  display={['block','block','block','block','flex']} justifyContent={['center','center','space-between']} mt='40px' minW={{md:780, base:205, lg: 1000, xl:1280, "2xl":1400}} >
     <VStack mb={3} p='30px' h={['130px','150px','250px']}  border={'1px dotted grey'} >
         <Text as='h1'fontSize={'1.6rem'} fontWeight={'600'}>{cart.length} iteams Selected</Text>
         <Text color='#a20f0f' fontWeight={600}> Gross Total : Rs.{totalPrice}</Text>
        { totalPrice === 0 ? null : <Button p={'5px'} colorScheme='facebook'><RouterLink to='/proceed-to-buy'>Proceed To buy</RouterLink></Button>}
     </VStack>
-    <VStack  p={2} minW={{md:70, base:20, lg: 190, xl:1280, "2xl":1400}} >
+    <VStack  p={2} minW={{md:"600px", base:20, lg: 190, xl:'1200px', "2xl":'1436px'}} >
     {/* w={[330,400,750]} */}
     
       {cart.length === 0 ? <Text mx='auto' as='h1' fontSize={[20,30,35]} fontWeight={600}>Your cart is empty</Text> :
