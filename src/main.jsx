@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom'; // Import from 'react-dom' instead of 'react-dom/client'
+import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import './index.css';
 import { ChakraProvider } from '@chakra-ui/react';
@@ -29,7 +29,9 @@ export const theme = extendTheme({
   }
 });
 
-ReactDOM.render(
+// Use createRoot to render your React application
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
   <React.StrictMode>
     <StateProvider initialState={InitialState} reducer={reducer}>
       <BrowserRouter>
@@ -38,6 +40,5 @@ ReactDOM.render(
         </ChakraProvider>
       </BrowserRouter>
     </StateProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );

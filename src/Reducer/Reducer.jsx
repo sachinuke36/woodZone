@@ -1,5 +1,6 @@
 export const InitialState = {
     cart: [],
+    address:[]
 };
 
 const reducer = (state, action) => {
@@ -26,6 +27,15 @@ const reducer = (state, action) => {
                 ...state,
                 cart: newBasket
             };
+        case "EMPTY_CART": return{
+            ...state,
+            cart: []
+        }
+
+        case "ADD_ADDRESS": return{
+            ...state,
+            address:[...state.address, action.address]
+        }
         default:
             return state;
     }

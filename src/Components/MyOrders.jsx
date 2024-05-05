@@ -2,6 +2,7 @@ import React from 'react';
 import { useStateValue } from '../StateProvider/StateProvider';
 import {Img, Box, VStack, HStack, Flex, Button, Text, Container} from '@chakra-ui/react'
 import { useToast } from '@chakra-ui/react'
+import { Link as RouterLink } from 'react-router-dom'; // Import Link component from react-router-dom
 
 
 
@@ -24,21 +25,24 @@ const MyOrders = () => {
             })
     }
 
-    let totalPrice = cart.reduce((total,item)=> total + item.price,0);
+
+     const  totalPrice = cart.reduce((total,item)=> total + item.price,0);
 
   return (
-   <VStack mt='40px' w={"98%"} spacing={7} pb={10}>
-    <VStack p='30px' h={['125px','150px','150px']} border={'1px solid gray'} borderRadius={'10px'}>
+   <Box display={['block','inline-block','flex']} justifyContent={['center','center','space-between']} mt='40px' minW={{md:780, base:205, lg: 1000, xl:1280, "2xl":1400}} >
+    <VStack mb={3} p='30px' h={['130px','150px','250px']}  border={'1px dotted grey'} >
         <Text as='h1'fontSize={'1.6rem'} fontWeight={'600'}>{cart.length} iteams Selected</Text>
-        <Text>{` Gross Total : Rs.${totalPrice}`}</Text>
-       { totalPrice === 0 ? null : <Button p={'5px'}>Proceed To buy</Button>}
+        <Text color='#a20f0f' fontWeight={600}> Gross Total : Rs.{totalPrice}</Text>
+       { totalPrice === 0 ? null : <Button p={'5px'} colorScheme='facebook'><RouterLink to='/proceed-to-buy'>Proceed To buy</RouterLink></Button>}
     </VStack>
+    <VStack  p={2} minW={{md:70, base:20, lg: 190, xl:1280, "2xl":1400}} >
+    {/* w={[330,400,750]} */}
     
-      {cart.length === 0 ? <Text as='h1' fontSize={'50px'} fontWeight={600}>Cart is empty.......</Text> :
+      {cart.length === 0 ? <Text mx='auto' as='h1' fontSize={[20,30,35]} fontWeight={600}>Your cart is empty</Text> :
       
         cart.map((item,i)=>(
             
-           <HStack key={i} overflow={'hidden'} borderRadius={'10px'} border='1px solid gray' h={['144px','160px','160px']} justifyContent={'space-between'}> 
+           <HStack key={i} spacing={5} overflow={'hidden'}  border='1px solid black' h={['160px','160px','160px']} minW={{md:70, base:70, lg: 100, xl:120, "2xl":1400}} justifyContent={'space-between'}> 
            <Box bg={'#d6cbcb'} >
                 <Img  mixBlendMode={"multiply"} src={item.image} objectFit={'contain'}  h={['140px', '170px', '170px']}  w={['140px', '170px', '170px']} ></Img>
            </Box>
@@ -51,14 +55,15 @@ const MyOrders = () => {
             {`Rs.${item.price}`}
            </Box>
            </Box> 
-           <Button onClick={()=>removeItem(item)}>Remove Item</Button>
+           <Button colorScheme='facebook' onClick={()=>removeItem(item)}>Remove Item</Button>
            </VStack>
            
               </HStack>
         ))
       
       }
-   </VStack>
+      </VStack>
+   </Box>
   )
 }
 

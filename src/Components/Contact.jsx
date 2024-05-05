@@ -26,6 +26,9 @@ const Contact = () => {
 
     const imageRef = useRef(null);
 
+    const currentDate = new Date();
+    const dateTimeString = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}-${currentDate.getDate().toString().padStart(2, '0')} ${currentDate.getHours().toString().padStart(2, '0')}:${currentDate.getMinutes().toString().padStart(2, '0')}:${currentDate.getSeconds().toString().padStart(2, '0')}`;
+
     useEffect(() => {
         if (imageRef.current) {
             const height = imageRef.current.clientHeight;
@@ -65,7 +68,8 @@ const Contact = () => {
                             name: '',
                             email: '',
                             contact: '',
-                            message: ''
+                            message: '',
+                            time:''
                         }}
                         onSubmit={async (values, { resetForm }) => {
                             try {
@@ -74,7 +78,8 @@ const Contact = () => {
                                     name: values.name,
                                     email: values.email,
                                     contact: values.contact,
-                                    message: values.message
+                                    message: values.message,
+                                    time: dateTimeString
                                 });
                         
                                 toast({
